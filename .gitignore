@@ -1,0 +1,8 @@
+#object files generated while building
+*.o
+# compiled executable of st
+st
+# patches
+*.diff
+# source code tarballs
+st-*.tar.gz

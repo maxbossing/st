@@ -6,7 +6,7 @@ My personal configuration of the st Terminal emulator.
 Requirements
 ------------
 In order to build st you need the Xlib header files.
-
+To use this configuration without changes, install the FiraCode Medium Font
 
 Installation
 ------------

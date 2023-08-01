@@ -5,10 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-// maxbossing // used font: https://github.com/tonsky/firacode
-static char *font = "Fira Code Medium:pixelsize=14.5:antialias=true:autohint=true";
-// maxbossing // padding around the termina text
-static int borderpx = 16;
+static char *font = "Fira Code:pixelsize=14.5:antialias=true:autohint=true";
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -18,8 +16,7 @@ static int borderpx = 16;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-// maxbossing // fish is superior
-static char *shell = "/usr/bin/fish";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -63,8 +60,7 @@ static double maxlatency = 33;
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
-// maxbossing // I hate blinging
-static unsigned int blinktimeout = 0;
+static unsigned int blinktimeout = 800;
 
 /*
  * thickness of underline and bar cursors
@@ -95,16 +91,12 @@ char *termname = "st";
  *
  *	stty tabs
  */
-// maxbossing // set to 4 tabs
-unsigned int tabspaces = 4;
+unsigned int tabspaces = 8;
 
-/* 
- * Color scheme
- */
-// maxbossing // Gruvbox Color scheme
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#282828", 
-    "#cc241d",
+	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d",
 	"#98971a",
 	"#d79921",
 	"#458588",
@@ -120,11 +112,15 @@ static const char *colorname[] = {
 	"#8ec07c",
 	"#ebdbb2",
 };
-// maxbossing // gruvbox color scheme
+
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
 unsigned int defaultfg = 15;
 unsigned int defaultbg = 0;
 unsigned int defaultcs = 15;
-
 static unsigned int defaultrcs = 257;
 
 /*
@@ -134,7 +130,6 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-// maxbossing // set to block
 static unsigned int cursorshape = 2;
 
 /*
@@ -147,7 +142,6 @@ static unsigned int rows = 24;
 /*
  * Default colour and shape of the mouse cursor
  */
-// +- maxbossing // Set to default X cursor
 static unsigned int mouseshape = XC_xterm;
 static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
@@ -188,7 +182,6 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-    // maxbossing // zoom to +/-
 	{ TERMMOD,              XK_plus,        zoom,           {.f = +1} },
 	{ TERMMOD,              XK_minus,       zoom,           {.f = -1} },
 	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },

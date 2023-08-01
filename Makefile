@@ -4,7 +4,7 @@
 
 include config.mk
 
-SRC = st.c x.c
+SRC = st.c x.c hb.c
 OBJ = $(SRC:.c=.o)
 
 all: options st
@@ -16,13 +16,14 @@ options:
 	@echo "CC      = $(CC)"
 
 config.h:
-	cp config.def.h config.h
+	mv config.def.h config.h
 
 .c.o:
 	$(CC) $(STCFLAGS) -c $<
 
 st.o: config.h st.h win.h
-x.o: arg.h config.h st.h win.h
+x.o: arg.h config.h st.h win.h hb.h
+hb.o: st.h
 
 $(OBJ): config.h config.mk
 
